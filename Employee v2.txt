@@ -1,0 +1,81 @@
+
+
+string name[10];
+int age[10];
+int salary[10];
+char gender[10];
+int input=0;
+int ctr=0;
+
+   
+//////////////////////////////////
+  void readEmp() {
+	cout << "Enter your name: ";
+	cin >> name[ctr];
+
+	cout << "Enter age: ";
+	cin >> age[ctr];
+
+	cout << "Enter salary: ";
+	cin >> salary[ctr];
+
+	cout << "Enter gender(M/F): ";
+	cin >> gender[ctr];
+	++ctr;
+}
+///////////////////////////////
+  void deletEmp(int s, int e) {
+	  for (int i = 0; i < 10; i++) {
+		  if (s <= age[i] && age[i] <= e) {
+			  name[i] = '\0';
+			  age[i] = 0;
+			  salary[i] = 0;
+			  gender[i] = '\0';
+		  }
+	  }
+  }
+//////////////////////////////
+  void printEmp() {
+	for (int i = 0; i < ctr; i++) {
+		cout << name[i] << " " << age[i] << " " << salary[i] << " " << gender[i] << "\n";
+	}
+   }
+  /////////////////////
+  void updateSalary(string Name,int Salary) {
+	  for (int i = 0; i < 10; i++) 
+		  if (name[i] == Name)
+			  salary[i] = Salary; 
+	  
+  }
+
+
+
+int main()
+{
+
+	while (1) {
+		cout << "Enter your choice: " << endl;
+		cout << "1) Add new employee" << endl;
+		cout << "2) Print all employees" << endl;
+		cout << "3) Delet by age" << endl;
+		cout << "4) Ubdate salary by name" << endl;
+
+		cin >> input;
+
+		switch (input) {
+
+		case 1:
+			readEmp(); break;
+		case 2:
+			printEmp(); break;
+		case 3:
+			int s, e;
+			cin >> s >> e;
+			deletEmp(s, e); break;
+		case 4:
+			string n;
+			int sa;
+			cin >> n >> sa;
+			updateSalary(n, sa); break;
+		}
+	}
